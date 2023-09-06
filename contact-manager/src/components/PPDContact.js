@@ -18,6 +18,7 @@ function PPD() {
       )
       .then((response) => {
         console.log(response);
+        window.location.reload();
       });
   };
 
@@ -30,6 +31,7 @@ function PPD() {
       )
       .then((response) => {
         console.log(response);
+        window.location.reload();
       });
   };
 
@@ -41,6 +43,7 @@ function PPD() {
       )
       .then((response) => {
         console.log(response);
+        window.location.reload();
       });
   };
 
