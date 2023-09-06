@@ -13,7 +13,7 @@ A simple contact manager application built using React and Axios for CRUD operat
 
 ## Introduction
 
-This Contact Manager is a web application that allows you to manage your contacts efficiently. It provides basic CRUD (Create, Read, Update, Delete) functionality for contacts and uses Axios to communicate with a backend API to perform these operations.
+This Contact Manager is a web application that allows you to manage your contacts efficiently. It provides basic CRUD (Create, Read, Update, Delete) functionality for contacts and uses Axios to communicate with a backend mock API to perform these operations.
 
 ## Features
 
