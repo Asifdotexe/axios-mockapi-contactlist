@@ -16,10 +16,28 @@ function GetContact() {
     return ( 
         <div>
         <h1>Welcome to Contact Manager App!</h1>
+        <h2>List of contacts</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email ID</th>
+                <th>Phone Number</th>
+            </tr>
+        </table>
         {contactData.map((data) => {
             return(
                 <div>
-                    {data.FirstName}
+                    <table>
+                    <tr>
+                        <td>{data.id}</td>
+                        <td>{data.fname}</td>
+                        <td>{data.lname}</td>
+                        <td>{data.email}</td>
+                        <td>{data.pno}</td>
+                    </tr>
+                    </table>
                 </div>
             )
         })}

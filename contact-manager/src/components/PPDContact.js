@@ -29,7 +29,7 @@ function PPD() {
 
     const handleDelete = (e) =>{
         e.preventDefault();
-        axios.delete("https://64f60a932b07270f705e0ad8.mockapi.io/api/contactdotexe/1")
+        axios.delete("https://64f60a932b07270f705e0ad8.mockapi.io/api/contactdotexe/11")
         .then((response) => {
             console.log(response)
         })
