@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function GetContact() {
+    // this state will hold the contact data
     const [contactData, setContactData] = useState([]);
+    // this state will manage the contact data being edited
     const [editingContact, setEditingContact] = useState(null);
 
+    // this will get data from API when component mounts
     useEffect(() => {
         axios.get("https://64f60a932b07270f705e0ad8.mockapi.io/api/contactdotexe/contacts")
             .then((response) => {
@@ -12,40 +15,44 @@ function GetContact() {
             });
     }, []);
 
+    // this will handle the deletion of contact
     const handleDelete = (id) => {
+        // this will show a warning message and ask for confirmation
         const confirmDelete = window.confirm("Are you sure you want to delete this contact?");
         if (confirmDelete) {
+            // this will send delete request to API
             axios.delete(`https://64f60a932b07270f705e0ad8.mockapi.io/api/contactdotexe/contacts/${id}`)
                 .then(() => {
                     setContactData((prevData) => prevData.filter((contact) => contact.id !== id));
-                })
-                .catch((error) => {
-                    console.error("Error deleting contact:", error);
                 });
         }
     };
 
+    // this will start the editing of the contact
     const handleEdit = (contact) => {
         setEditingContact({ ...contact }); // Make a copy of the contact
     };
 
+    // this will cancel the editing of the contact
     const handleCancelEdit = () => {
         setEditingContact(null);
     };
 
+    // this will update the contact based on the edit
     const handleUpdate = () => {
         if (editingContact) {
+            // sends PUT request to API
             axios.put(`https://64f60a932b07270f705e0ad8.mockapi.io/api/contactdotexe/contacts/${editingContact.id}`, editingContact)
                 .then(() => {
-                    setEditingContact(null);
+                    // it will clear the editing state
+                    setEditingContact(null); 
+                    // this will fetch the update data from the API
                     fetchContacts();
-                })
-                .catch((error) => {
-                    console.error("Error updating contact:", error);
                 });
         }
     };
 
+    // this will handle the input when editing the contact
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setEditingContact((prevContact) => ({
@@ -54,6 +61,7 @@ function GetContact() {
         }));
     };
 
+    // this will fetch all the contact from API using GET
     const fetchContacts = () => {
         axios.get("https://64f60a932b07270f705e0ad8.mockapi.io/api/contactdotexe/contacts")
             .then((response) => {
@@ -81,35 +89,21 @@ function GetContact() {
                             <td>{contact.id}</td>
                             <td>
                                 {editingContact && editingContact.id === contact.id ? (
-                                    <input
-                                        type="text"
-                                        name="fname"
-                                        value={editingContact.fname}
-                                        onChange={handleInputChange}
-                                    />
+                                    <input type="text" name="fname" value={editingContact.fname} onChange={handleInputChange}/>
                                 ) : (
                                     contact.fname
                                 )}
                             </td>
                             <td>
                                 {editingContact && editingContact.id === contact.id ? (
-                                    <input
-                                        type="text"
-                                        name="lname"
-                                        value={editingContact.lname}
-                                        onChange={handleInputChange}
-                                    />
+                                    <input type="text" name="lname" value={editingContact.lname} onChange={handleInputChange}/>
                                 ) : (
                                     contact.lname
                                 )}
                             </td>
                             <td>
                                 {editingContact && editingContact.id === contact.id ? (
-                                    <input
-                                        type="text"
-                                        name="email"
-                                        value={editingContact.email}
-                                        onChange={handleInputChange}
+                                    <input type="text" name="email" value={editingContact.email} onChange={handleInputChange}
                                     />
                                 ) : (
                                     contact.email
@@ -117,12 +111,7 @@ function GetContact() {
                             </td>
                             <td>
                                 {editingContact && editingContact.id === contact.id ? (
-                                    <input
-                                        type="text"
-                                        name="pno"
-                                        value={editingContact.pno}
-                                        onChange={handleInputChange}
-                                    />
+                                    <input type="text" name="pno" value={editingContact.pno} onChange={handleInputChange}/>
                                 ) : (
                                     contact.pno
                                 )}
@@ -130,33 +119,13 @@ function GetContact() {
                             <td>
                                 {editingContact && editingContact.id === contact.id ? (
                                     <div>
-                                        <button
-                                            className="btn btn-success"
-                                            onClick={handleUpdate}
-                                        >
-                                            Save
-                                        </button>
-                                        <button
-                                            className="btn btn-warning ml-2"
-                                            onClick={handleCancelEdit}
-                                        >
-                                            Cancel
-                                        </button>
+                                        <button className="btn btn-success" onClick={handleUpdate}>Save</button>
+                                        <button className="btn btn-warning ml-2" onClick={handleCancelEdit}>Cancel</button>
                                     </div>
                                 ) : (
                                     <div>
-                                        <button
-                                            className="btn btn-primary"
-                                            onClick={() => handleEdit(contact)}
-                                        >
-                                            Edit
-                                        </button>
-                                        <button
-                                            className="btn btn-danger ml-2"
-                                            onClick={() => handleDelete(contact.id)}
-                                        >
-                                            Delete
-                                        </button>
+                                        <button className="btn btn-primary" onClick={() => handleEdit(contact)}>Edit</button>
+                                        <button className="btn btn-danger ml-2" onClick={() => handleDelete(contact.id)}>Delete</button>
                                     </div>
                                 )}
                             </td>
