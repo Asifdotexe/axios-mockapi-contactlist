@@ -1,5 +1,6 @@
 // importing useState and axios
 import React, { useState } from 'react';
+import './Contact.css'
 import axios from 'axios';
 
 function PPD() {
@@ -30,10 +31,10 @@ function PPD() {
 
   return (
     <div className="container mt-4">
-                    <h1>Welcome to Contact Manager App!</h1>
-                    <h3>By Asif Sayyed</h3>
+                    <h1>CONTACT MANAGER APP</h1>
+                    <h6>Project by Asif Sayyed</h6>
                     <hr></hr>
-      // input form
+      {/* Input form */}
       <form>
         <div className="mb-3">
           <label className="form-label">First Name:</label>
