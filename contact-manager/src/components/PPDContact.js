@@ -22,30 +22,6 @@ function PPD() {
       });
   };
 
-  const handleUpdate = (e) => {
-    e.preventDefault();
-    axios
-      .put(
-        `https://64f60a932b07270f705e0ad8.mockapi.io/api/contactdotexe/contacts/${inputData.id}`,
-        inputData
-      )
-      .then((response) => {
-        console.log(response);
-        window.location.reload();
-      });
-  };
-
-  const handleDelete = (e) => {
-    e.preventDefault();
-    axios
-      .delete(
-        `https://64f60a932b07270f705e0ad8.mockapi.io/api/contactdotexe/contacts/${inputData.id}`
-      )
-      .then((response) => {
-        console.log(response);
-        window.location.reload();
-      });
-  };
 
   return (
     <div className="container mt-4">
@@ -95,21 +71,7 @@ function PPD() {
         <button className="btn btn-primary" onClick={handleSubmit}>
           Submit
         </button>
-        <button className="btn btn-success" onClick={handleUpdate}>
-          Update
-        </button>
-        <button className="btn btn-danger" onClick={handleDelete}>
-          Delete
-        </button><hr></hr>
         <div className="mb-3">
-          <label className="form-label">ID: (Specify if Update or Delete)</label>
-          <input
-            type="text"
-            className="form-control"
-            name="id"
-            value={inputData.id}
-            onChange={handleData}
-          />
           <hr></hr>
         </div>
       </form>
