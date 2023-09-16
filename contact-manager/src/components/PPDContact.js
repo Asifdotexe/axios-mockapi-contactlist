@@ -53,9 +53,7 @@ function PPD() {
           <label className="form-label">Phone Number:</label>
           <input type="phonenumber" className="form-control" name="pno" value={inputData.pno} onChange={handleData}/>
         </div>
-        <button className="btn btn-primary" onClick={handleSubmit}>
-          Submit
-        </button>
+        <button className="btn btn-primary" onClick={handleSubmit}>Submit</button>
         <div className="mb-3">
           <hr></hr>
         </div>
