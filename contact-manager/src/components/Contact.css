@@ -1,10 +1,14 @@
 /* Style for the container */
+body {
+    background-image: url("D:\College\Academics\SEM 3\Full Stack Web Development\assignment\Assignment 1\axios-mockapi-contactlist\contact-manager\public\bg.jpg");
+  }
+
 .container {
     margin-top: 20px;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 5px solid #FFFFFF;
     border-radius: 5px;
-    background-color: #dad9d4;
+    background-color: #A4CAEE;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
